@@ -1,0 +1,3 @@
+every(0.10){
+	<%=flash[:notice]="paso 10 minutos" %>
+}
