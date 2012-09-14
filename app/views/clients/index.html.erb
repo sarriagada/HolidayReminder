@@ -3,9 +3,9 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Mail</th>
-    <th>Pais</th>
-    <th>User</th>
+    <th>Country</th>
+    <th>Accion</th>
+    <th></th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,12 +14,12 @@
 <% @clients.each do |client| %>
   <tr>
     <td><%= client.name %></td>
-    <td><%= client.mail %></td>
     <td><%= client.pais %></td>
-    <td><%= client.user_id %></td>
     <td><%= link_to 'Show', client %></td>
     <td><%= link_to 'Edit', edit_client_path(client) %></td>
-    <td><%= link_to 'Destroy', client, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+    <td><%= link_to 'Destroy', client, :method => :delete, :data => { :confirm => 'Are you sure?'
+     } %></td>
+    <td><%= link_to 'Holidays', holidays_path %></td>
   </tr>
 <% end %>
 </table>
