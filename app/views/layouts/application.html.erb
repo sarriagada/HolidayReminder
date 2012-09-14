@@ -1,17 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>HolidayReminder</title>
+  <title>HolidayWeb</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-	
-	<p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+	<div class="container">
+		<header>
+			<h1>Holiday</h1>
+			<p><%= link_to_unless_current "::Holiday", root_path %><p>
+			<% if user_signed_in? %><%= link_to "User: #{current_user.email}", edit_user_registration_path(current_user), :class=>"username" %><% end %>
+		</header>
+		<div class="btn-group">
+		  <%= link_to_unless_current "Home", root_path , :class => "btn" %>
+		  <% if user_signed_in? %>
+		    <%= link_to_unless_current "Holidays", holidays_path, :class => "btn" %>
+		    <%= link_to_unless_current "Salir", destroy_user_session_path, :method => :delete , :class => "btn" %>
+		  <% else %>
+		    <%= link_to_unless_current "Registrarse", new_user_registration_path , :class => "btn" %>
+		    <%= link_to_unless_current "Entrar", new_user_session_path , :class => "btn" %>
+		  <% end %>
+		</div>
+		<div id="contenido">
+			<% if flash[:notice] %>
+				<div class="alert alert-info"><button type="button" class="close" data-dismiss="alert">×</button>
+				<%= notice %></div>
+			<% end %>
+       		<% if flash[:alert] %>
+				<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>
+				<%= alert %></div>
+			<% end %>
+			
+			<div id="wrap">
+				<div id="main" class="clear-top">
+					<div class="row"> 
+						<div class="span11">
 
-<%= yield %>
+							<%= yield %> 
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<footer class="footer">pie de pagina</footer>
+
+	</div>
 
 </body>
 </html>
