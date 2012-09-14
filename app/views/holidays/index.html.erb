@@ -1,15 +1,11 @@
 <h1>Listing holidays</h1>
 
-<table>
+<table class="table table-bordered table-hover">
   <tr>
     <th>Title</th>
     <th>Description</th>
     <th>Date</th>
-    <th>Client</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th colspan=3>Action</th>
   </tr>
 
 <% @holidays.each do |holiday| %>
@@ -17,8 +13,6 @@
     <td><%= holiday.title %></td>
     <td><%= holiday.description %></td>
     <td><%= holiday.date %></td>
-    <td><%= holiday.client_id %></td>
-    <td><%= holiday.user_id %></td>
     <td><%= link_to 'Show', holiday %></td>
     <td><%= link_to 'Edit', edit_holiday_path(holiday) %></td>
     <td><%= link_to 'Destroy', holiday, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>

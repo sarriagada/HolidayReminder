@@ -14,9 +14,8 @@
 			<% if user_signed_in? %><%= link_to "User: #{current_user.email}", edit_user_registration_path(current_user), :class=>"username" %><% end %>
 		</header>
 		<div class="btn-group">
-		  <%= link_to_unless_current "Home", root_path , :class => "btn" %>
 		  <% if user_signed_in? %>
-		    <%= link_to_unless_current "Holidays", holidays_path, :class => "btn" %>
+		    <%= link_to_unless_current "Clients", clients_path, :class => "btn" %>
 		    <%= link_to_unless_current "Salir", destroy_user_session_path, :method => :delete , :class => "btn" %>
 		  <% else %>
 		    <%= link_to_unless_current "Registrarse", new_user_registration_path , :class => "btn" %>
