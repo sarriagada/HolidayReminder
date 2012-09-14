@@ -1,9 +1,11 @@
 HolidayReminder::Application.routes.draw do
 
+  devise_for :users
+
   resources :clients
   
   resources :holidays
-  
+
   root :to => "clients#index"
 
   # The priority is based upon order of creation:
