@@ -13,6 +13,7 @@ class HolidaysController < ApplicationController
   # GET /holidays/1
   # GET /holidays/1.json
   def show
+    @title="Holidays"
     @holiday = Holiday.find(params[:id])
 
     respond_to do |format|
@@ -24,6 +25,7 @@ class HolidaysController < ApplicationController
   # GET /holidays/new
   # GET /holidays/new.json
   def new
+    @title="Holidays"
     @holiday = Holiday.new
     respond_to do |format|
       format.html # new.html.erb
@@ -41,6 +43,7 @@ class HolidaysController < ApplicationController
   def create
     @holiday = Holiday.new(params[:holiday])
     @holiday.user_id= current_user.id
+    @holiday.client_id= params[:client][:id]
     respond_to do |format|
       if @holiday.save
         format.html { redirect_to @holiday, :notice => 'Holiday was successfully created.' }

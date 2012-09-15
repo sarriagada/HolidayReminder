@@ -9,17 +9,17 @@
 <body>
 	<div class="container">
 		<header>
-			<h1>Holiday</h1>
-			<p><%= link_to_unless_current "::Holiday", root_path %><p>
+			<h1><%= if @title then @title else "Reminder" end %></h1>
+			<p><%= link_to_unless_current ":Holiday Reminder", root_path %><p>
 			<% if user_signed_in? %><%= link_to "User: #{current_user.email}", edit_user_registration_path(current_user), :class=>"username" %><% end %>
 		</header>
 		<div class="btn-group">
 		  <% if user_signed_in? %>
 		    <%= link_to_unless_current "Clients", clients_path, :class => "btn" %>
-		    <%= link_to_unless_current "Salir", destroy_user_session_path, :method => :delete , :class => "btn" %>
+		    <%= link_to_unless_current "Sign Out", destroy_user_session_path, :method => :delete , :class => "btn" %>
 		  <% else %>
-		    <%= link_to_unless_current "Registrarse", new_user_registration_path , :class => "btn" %>
-		    <%= link_to_unless_current "Entrar", new_user_session_path , :class => "btn" %>
+		    <%= link_to_unless_current "Sign up", new_user_registration_path , :class => "btn" %>
+		    <%= link_to_unless_current "Sign in", new_user_session_path , :class => "btn" %>
 		  <% end %>
 		</div>
 		<div id="contenido">

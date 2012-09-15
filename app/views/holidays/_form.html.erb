@@ -12,19 +12,22 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :description %><br />
+    <%= f.label :description %>
     <%= f.text_field :description %>
   </div>
   <div class="field">
-    <%= f.label :date %><br />
+    <%= f.label :date %>
     <%= f.date_select :date %>
   </div>
-  <%= select("client","client_id",current_user.clients.collect {|c| [ c.name, c.id ] }, {:prompt => 'Select Client'}) %>
+  <div class="field">
+    <%= f.label :client_id %>
+    <%= select(:client ,:id,current_user.clients.collect {|c| [ c.name, c.id ] }, {:prompt => 'Select Client'}) %>
+  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class=>"btn"%>
   </div>
 <% end %>

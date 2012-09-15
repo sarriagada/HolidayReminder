@@ -3,6 +3,7 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
+    @title="Clients"
     @clients = current_user.clients
 
     respond_to do |format|
@@ -14,6 +15,7 @@ class ClientsController < ApplicationController
   # GET /clients/1
   # GET /clients/1.json
   def show
+    @title="Holidays"
     @client = Client.find(params[:id])
     @holidays = @client.holidays
     respond_to do |format|
@@ -25,6 +27,7 @@ class ClientsController < ApplicationController
   # GET /clients/new
   # GET /clients/new.json
   def new
+    @title="Client"
     @client = Client.new
 
     respond_to do |format|

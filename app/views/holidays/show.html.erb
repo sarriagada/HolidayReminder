@@ -1,5 +1,4 @@
-<p id="notice"><%= notice %></p>
-
+<h1>Holiday</h1>
 <p>
   <b>Title:</b>
   <%= @holiday.title %>
@@ -14,17 +13,7 @@
   <b>Date:</b>
   <%= @holiday.date %>
 </p>
-
-<p>
-  <b>Client:</b>
-  <%= @holiday.client_id %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @holiday.user_id %>
-</p>
-
+<hr>
 
 <%= link_to 'Edit', edit_holiday_path(@holiday) %> |
-<%= link_to 'Back', holidays_path %>
+<%= link_to 'Back', clients_path %>
