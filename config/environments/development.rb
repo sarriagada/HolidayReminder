@@ -44,7 +44,7 @@ HolidayReminder::Application.configure do
   config.action_mailer.smtp_settings = {
   :address              => "smtp.gmail.com",
   :port                 => 587,
-  :domain               => "holiday.heroku.com",
+  :domain               => "holidayreminder.com",
   :user_name            => "sarriagada87",
   :password             => "32876747",
   :authentication       => "plain",
