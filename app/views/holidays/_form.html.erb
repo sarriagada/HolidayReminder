@@ -23,14 +23,7 @@
     <%= f.label :date %><br />
     <%= f.date_select :date %>
   </div>
-  <div class="field">
-    <%= f.label :client_id %><br />
-    <%= f.number_field :client_id %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </div>
+  <%= select("client","client_id",current_user.clients.collect {|c| [ c.name, c.id ] }, {:prompt => 'Select Client'}) %>
   <div class="actions">
     <%= f.submit %>
   </div>

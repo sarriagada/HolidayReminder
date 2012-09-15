@@ -25,7 +25,6 @@ class HolidaysController < ApplicationController
   # GET /holidays/new.json
   def new
     @holiday = Holiday.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render :json => @holiday }
@@ -41,7 +40,7 @@ class HolidaysController < ApplicationController
   # POST /holidays.json
   def create
     @holiday = Holiday.new(params[:holiday])
-
+    @holiday.user_id= current_user.id
     respond_to do |format|
       if @holiday.save
         format.html { redirect_to @holiday, :notice => 'Holiday was successfully created.' }

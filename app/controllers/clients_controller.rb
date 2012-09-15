@@ -3,7 +3,7 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.all
+    @clients = current_user.clients
 
     respond_to do |format|
       format.html # index.html.erb
@@ -42,7 +42,7 @@ class ClientsController < ApplicationController
   # POST /clients.json
   def create
     @client = Client.new(params[:client])
-
+    @client.user_id=current_user.id
     respond_to do |format|
       if @client.save
         format.html { redirect_to @client, :notice => 'Client was successfully created.' }
