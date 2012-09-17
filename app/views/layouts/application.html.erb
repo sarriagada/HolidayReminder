@@ -9,6 +9,7 @@
 <body>
 	<div class="container">
 		<header>
+			<%= image_tag("insignia.png", :class => "imagen") %>
 			<h1><%= if @title then @title else "Reminder" end %></h1>
 			<p><%= link_to_unless_current ":Holiday Reminder", root_path %><p>
 			<% if user_signed_in? %><%= link_to "User: #{current_user.email}", edit_user_registration_path(current_user), :class=>"username" %><% end %>

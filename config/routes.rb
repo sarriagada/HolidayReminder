@@ -4,7 +4,7 @@ HolidayReminder::Application.routes.draw do
 
   authenticated :user do
     
-    root to: 'clients#index'
+    root :to => 'clients#index'
   
   end
 
