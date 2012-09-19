@@ -5,25 +5,40 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-	<div class="container">
-		<header>
-			<%= image_tag("insignia.png", :class => "imagen") %>
-			<h1><%= if @title then @title else "Reminder" end %></h1>
-			<p><%= link_to_unless_current ":Holiday Reminder", root_path %><p>
-			<% if user_signed_in? %><%= link_to "User: #{current_user.email}", edit_user_registration_path(current_user), :class=>"username" %><% end %>
-		</header>
-		<div class="btn-group">
-		  <% if user_signed_in? %>
-		    <%= link_to_unless_current "Clients", clients_path, :class => "btn" %>
-		    <%= link_to_unless_current "Sign Out", destroy_user_session_path, :method => :delete , :class => "btn" %>
-		  <% else %>
-		    <%= link_to_unless_current "Sign up", new_user_registration_path , :class => "btn" %>
-		    <%= link_to_unless_current "Sign in", new_user_session_path , :class => "btn" %>
-		  <% end %>
+	<div class="container-fluit">
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="row-fluit">
+
+				<div class="imagen">
+					<%= image_tag("insignia.png", :class => "imagen") %>
+				</div>
+
+				<div class="span3">
+					<p>::Holiday Reminder</p>
+				</div>
+
+				<div class="span2">
+					<div class="btn-group">
+					  <% if user_signed_in? %>
+					    <%= link_to_unless_current "Clients", clients_path, :class => "btn btn-small" %>
+					    <%= link_to_unless_current "Sign Out", destroy_user_session_path, :method => :delete , :class => "btn btn-small" %>
+					  <% else %>
+					    <%= link_to_unless_current "Sign up", new_user_registration_path , :class => "btn btn-small" %>
+					    <%= link_to_unless_current "Sign in", new_user_session_path , :class => "btn btn-small" %>
+					  <% end %>
+					</div>
+				</div>
+				
+			</div>
 		</div>
-		<div id="contenido">
+		<div class="container-fluit">
+		
+			<% if user_signed_in? %><%= link_to "User: #{current_user.email}", edit_user_registration_path(current_user), :class=>"username" %><hr style="width:25%">
+			<% end %>
+
 			<% if flash[:notice] %>
 				<div class="alert alert-info"><button type="button" class="close" data-dismiss="alert">×</button>
 				<%= notice %></div>
@@ -31,24 +46,14 @@
        		<% if flash[:alert] %>
 				<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>
 				<%= alert %></div>
-			<% end %>
-			
-			<div id="wrap">
-				<div id="main" class="clear-top">
-					<div class="row"> 
-						<div class="span11">
+			<% end %>	
+		
+			<%= yield %>
 
-							<%= yield %> 
-
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
-	
-		<footer class="footer">pie de pagina</footer>
-
 	</div>
+	
+	<footer class="navbar navbar-fixed-bottom"><p>pie de pagina</p></footer>
 
 </body>
 </html>
