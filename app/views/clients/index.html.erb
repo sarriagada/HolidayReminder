@@ -1,4 +1,6 @@
-<h1>Listing clients</h1>
+<h1>Listing clients
+    <%= link_to 'New Client', new_client_path ,:class => "btn btn-small"%>
+</h1>
 <hr>
 <div class="scroll-tab">
   <table class="table table-bordered table-hover">
@@ -20,4 +22,3 @@
   <% end %>
   </table>
 </div>
-<%= link_to 'New Client', new_client_path ,:class => "btn btn-small"%>

@@ -20,16 +20,26 @@
 					<p>::Holiday Reminder</p>
 				</div>
 
-				<div class="span2">
-					<div class="btn-group">
+				<div class="span10">
 					  <% if user_signed_in? %>
-					    <%= link_to_unless_current "Clients", clients_path, :class => "btn btn-small" %>
-					    <%= link_to_unless_current "Sign Out", destroy_user_session_path, :method => :delete , :class => "btn btn-small" %>
+					  	<div class="btn-group">
+					    	<%= link_to_unless_current "Clients", clients_path, :class => "btn btn-small" %>
+					    	<%= link_to_unless_current "Sign Out", destroy_user_session_path, :method => :delete , :class => "btn btn-small" %>
+					    </div>
 					  <% else %>
-					    <%= link_to_unless_current "Sign up", new_user_registration_path , :class => "btn btn-small" %>
-					    <%= link_to_unless_current "Sign in", new_user_session_path , :class => "btn btn-small" %>
+
+						<%= form_for("user", :url => user_session_path, :html => { :class => "form-inline"}) do |f| %>
+							Email:
+							<%= f.text_field :email ,:class => "span3"%>
+							Password:
+							<%= f.password_field :password ,:class => "span3" %>
+	  					    <%= f.submit 'Sign in', :class=>"btn" %>
+							Remember me:
+							<%= f.check_box :remember_me ,:class => "btn"%>
+							<br>
+						<% end %>
+
 					  <% end %>
-					</div>
 				</div>
 				
 			</div>
